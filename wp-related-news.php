@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * WP News Post Type & Related News Widget
@@ -26,12 +26,12 @@ class WPRelatedNews {
 	public function displayNewsItems()
 	{
 
-		// extract the attributes into variables
+			// extract the attributes into variables
     	extract(shortcode_atts(array(
-        	'num_items' => 5,
+        'num_items' => 5,
     	), $atts));
 
-		// Capturing current post data
+			// Capturing current post data
     	$post_id = get_the_ID();
     	$cat_ids = array();
     	$categories = get_the_category( $post_id );
@@ -45,7 +45,7 @@ class WPRelatedNews {
 	    $news_post_type = 'yoko_news';
 
 	    // Custom WP query relatednews in category of current post
-	    $query_args = array( 
+	    $query_args = array(
 	        'category__in'   => $cat_ids,
 	        'post_type'      => $news_post_type,
 	        'post__not_in'    => array($post_id),
@@ -73,11 +73,11 @@ class WPRelatedNews {
 
 	}
 
-    function create_news_post_type() {
+  public function create_news_post_type() {
 
         $name = 'News';
         $singular_name = 'News';
-        register_post_type( 
+        register_post_type(
             'yoko_' . strtolower( $name ),
             array(
                 'labels' => array(
